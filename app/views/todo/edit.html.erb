@@ -5,6 +5,7 @@
   <input type="checkbox" name="status" value="true">
   <input class="text-input" name="description" id="description" type="text" value="<%= @todo.description %>">
   <input class="text-input" name="pomodoros" id="pomodoros-" type="number" value="<%= @todo.pomodoros %>">
+  <input name="duedate" type="date" value="<%= @todo.duedate.to_date %>">
   <input class="button" id="add-new-todo-button" type="submit" value="Update to-do">
 </form>
 

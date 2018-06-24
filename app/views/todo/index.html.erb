@@ -2,22 +2,39 @@
   Workshop Todo List
 </h1>
 
-<h3>Incomplete To-dos</h3>
+<h3>Due Today - <%= Date.today.strftime("%A %B %d") %></h3>
 <ul>
-    <% @incomplete_todos.each do |todo| %>
+    <% @due_today.each do |todo| %>
     <li>
       <a href="/todo/show/<%= todo.id %>"> <%=todo.description %></a>
-      <span><%= todo.pomodoros %> Pomodoros</span>
+      <span><%= todo.pomodoros %> Pomdoros</span>
     </li>
 <% end %>
 </ul>
-
+<h3>Due Tomorrow - <%= Date.tomorrow.strftime("%A %B %d") %></h3>
+<ul>
+    <% @due_tomorrow.each do |todo| %>
+    <li>
+      <a href="/todo/show/<%= todo.id %>"> <%=todo.description %></a>
+      <span><%= todo.pomodoros %> Pomdoros</span>
+    </li>
+<% end %>
+</ul>
+<h3>Due later</h3>
+<ul>
+    <% @due_later.each do |todo| %>
+    <li>
+      <a href="/todo/show/<%= todo.id %>"> <%=todo.description %></a>
+      <span><%= todo.duedate.strftime("%A %B %d") %> Pomdoros</span>
+    </li>
+<% end %>
+</ul>
 <h3>Completed To-dos</h3>
 <ul>
     <% @completed_todos.each do |todo| %>
     <li>
       <a href="/todo/show/<%= todo.id %>"> <%=todo.description %></a>
-      <span><%= todo.pomodoros %> Pomodoros</span>
+      <span>Due: <%= todo.duedate.strftime("%A %B %d") %></span>
     </li>
 <% end %>
 
