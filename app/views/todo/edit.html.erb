@@ -1,0 +1,11 @@
+<h1>
+    Edit To-do #<%= @todo.id %>
+</h1>
+<form action="/todo/update/<%= @todo.id %>">
+  <input type="checkbox" name="status" value="true">
+  <input class="text-input" name="description" id="description" type="text" value="<%= @todo.description %>">
+  <input class="text-input" name="pomodoros" id="pomodoros-" type="number" value="<%= @todo.pomodoros %>">
+  <input class="button" id="add-new-todo-button" type="submit" value="Update to-do">
+</form>
+
+<a href="/todo/show/<%= @todo.id %>">Go back...</a>

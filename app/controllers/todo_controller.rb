@@ -1,29 +1,45 @@
 class TodoController < ApplicationController
+  def new
+  end
+  
+  def create
+    t = Todo.new
+    t.description = params[:description]
+    t.pomodoros = params[:pomodoros]
+    t.status = nil
+    t.save
+    
+    redirect_to '/todo/index'
+  end
+  
   def index
+    @todos = Todo.all
+    @incomplete_todos = Todo.where(status: nil)
+    @completed_todos = Todo.where(status: true)
   end
   
   def show
-    if params[:id] == "1"
-    @description = "Make the curriculum"
-    @pomodoro = "4"
-    elsif params[:id] == "2"
-      @description = "Buy workshop supplies"
-      @pomodoro = "3"
-    elsif params[:id]  == "3"
-     @description = "Meet with the volunteer trainers"
-     @pomodoro = "2"
-    elsif params[:id] == "4"
-     @description = "Order food for Saturday and Sunday"
-     @pomodoro = "1"
-    elsif params[:id] == "5"
-     @description = "Check pre-work assignments"
-     @pomodoro = "2"
-    elsif params[:id] == "6"
-     @description = "Send workshop location to all the students"
-     @pomodoro = "1"
-    elsif params[:id] == "7"
-     @description = "Have a great workshop"
-     @pomodoro = "0"
-    end
+    @todo = Todo.find(params[:id].to_i)
+  end
+  
+  def edit
+    @todo = Todo.find(params[:id].to_i)
+  end
+  
+  def update
+    todo = Todo.find(params[:id].to_i)
+    todo.status = params[:status]
+    todo.description = params[:description]
+    todo.pomodoros = params[:pomodoros]
+    todo.save
+    
+    redirect_to "/todo/index"
+  end
+  def delete
+    todo = Todo.find(params[:id].to_i)
+    todo.destroy
+    
+    
+    redirect_to '/todo/index'
   end
 end

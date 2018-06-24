@@ -1,48 +1,27 @@
 <h1>
-  <img class="company-logo" src="https://public.3.basecamp.com/p/iahgNshn1oKq98sWGf1q89Vo/uploads/511042491/download/CodeNow%20Logo.png"></img>
   Workshop Todo List
 </h1>
 
-<ul class="card">
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/1">Make the curriculum</a>
-    <span class="pomodoro-estimate">4 Pomodoros</span>
-  </li>
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/2">Buy workshop supplies</a>
-    <span class="pomodoro-estimate">3 Pomodoros</span>
-  </li>
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/3">Meet with the volunteer trainers</a>
-    <span class="pomodoro-estimate">2 Pomodoros</span>
-  </li>
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/4">Order food for Saturday and Sunday</a>
-    <span class="pomodoro-estimate">1 Pomodoro</span>
-  </li>
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/5">Check pre-work assignments</a>
-    <span class="pomodoro-estimate">2 Pomodoros</span>
-  </li>
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/6">Send workshop location to all the students</a>
-    <span class="pomodoro-estimate">1 Pomodoro</span>
-  </li>
-  <li>
-    <input type="checkbox" name=""/>
-    <a href="/todo/show/7">Have a great workshop</a>
-    <span class="pomodoro-estimate">0 Pomodoros</span>
-  </li>
+<h3>Incomplete To-dos</h3>
+<ul>
+    <% @incomplete_todos.each do |todo| %>
+    <li>
+      <a href="/todo/show/<%= todo.id %>"> <%=todo.description %></a>
+      <span><%= todo.pomodoros %> Pomodoros</span>
+    </li>
+<% end %>
 </ul>
 
-<div id="new-todo-block">
-  <input class="text-input" id="new-todo-description" type="text" placeholder="Add a new todo...">
-  <input class="text-input" id="new-pomodoro-estimate" type="number" placeholder="Pomodoro estimate...">
-  <input class="button" id="add-new-todo-button" type="submit" value="Add todo">
-</div>
+<h3>Completed To-dos</h3>
+<ul>
+    <% @completed_todos.each do |todo| %>
+    <li>
+      <a href="/todo/show/<%= todo.id %>"> <%=todo.description %></a>
+      <span><%= todo.pomodoros %> Pomodoros</span>
+    </li>
+<% end %>
+
+</ul>
+
+<a href="/todo/new">Add new to-do...</a>
+

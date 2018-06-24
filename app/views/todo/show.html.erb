@@ -1,12 +1,12 @@
 <h1>
-  Workshop Todo List- Todo #<%= params[:id] %> 
+  Workshop Todo List- Todo #<%= @todo.id %> 
  </h1>
     
 <div class="card">
   <input type="checkbox" name=""/>
-  <h2><%= @description %></h2>
-  <span class="pomodoro-estimate large-pomodoro-estimate"><%= @pomodoro%>Pomodoros</span>
-  <a href="#" class="button" id="edit-todo-button">Edit</a>
-  <a href="#" class="button" id="delete-todo-button">Delete</a>
+  <h2><%= @todo.description %></h2>
+  <span class="pomodoro-estimate large-pomodoro-estimate"><%= @todo.pomodoros %>Pomodoros</span>
+  <a href="/todo/edit/<%= @todo.id %>" class="button" id="edit-todo-button">Edit</a>
+  <a href="/todo/delete/<%= @todo.id %>" class="button" id="delete-todo-button">Delete</a>
   <a href="/todo/index" class="simple-link">Go back...</a>
 </div>
